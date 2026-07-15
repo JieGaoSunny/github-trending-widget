@@ -1,2 +1,5 @@
 node_modules/
 .wrangler/
+preview*.html
+preview[0-9]*.png
+preview8b.png
