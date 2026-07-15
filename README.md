@@ -1,75 +1,78 @@
 # GitHub Trending Widget 📊
 
-一个 iOS Scriptable 桌面小组件，每天展示 GitHub Trending 热门项目，支持中文摘要。
+An iOS home screen widget that displays today's GitHub Trending repositories — built with [Scriptable](https://scriptable.app) and powered by a Cloudflare Worker backend.
 
-![preview](preview.png)
+<p align="center">
+  <img src="preview.png" width="360" alt="GitHub Trending Widget on iPhone">
+</p>
 
-## ✨ 功能
+## Features
 
-- 🏆 每页显示 6 个 trending repo，每小时自动轮播
-- 🥇🥈🥉 前三名奖牌展示
-- ★ 今日新增 star 数（按热度渐变：🔥橙 → 🌟金 → ⚪灰）
-- 🇨🇳 AI 生成中文一句话摘要（Cloudflare Workers AI）
-- ☆ Total stars + 英文原描述
-- 点击 widget 跳转 github.com/trending
+- 🏆 Top 12 trending repos, 6 per page with hourly rotation
+- 🥇🥈🥉 Medal ranks for top 3
+- ★ Today's star count with heat-based coloring (🔥 orange → 🌟 gold → gray)
+- 🇨🇳 One-line Chinese summary via Cloudflare Workers AI (Llama 3.3 70B)
+- ☆ Total stars + original English description
+- Tap widget to jump to github.com/trending
+- Auto-refreshes every hour, data cached 4h on edge
 
-## 🛠️ 架构
+## Architecture
 
 ```
 iOS Widget (Scriptable)
     ↓ fetch JSON
-Cloudflare Worker (your-worker.workers.dev)
-    ↓ scrape + AI summarize
-GitHub Trending Page
+Cloudflare Worker
+    ├── Scrapes GitHub Trending page
+    ├── Generates Chinese summaries (Workers AI)
+    └── Caches in KV (4h TTL)
 ```
 
-- **数据源**: 每 4 小时抓取 GitHub Trending 页面
-- **中文摘要**: Cloudflare Workers AI (Llama 3.3 70B)
-- **缓存**: Cloudflare KV，4 小时 TTL
-- **排序**: 按今日 star 数降序
+## Quick Start
 
-## 📱 安装步骤
+### 1. Deploy the Worker
 
-### 1. 安装 Scriptable
-从 App Store 下载 [Scriptable](https://apps.apple.com/app/scriptable/id1405459188)
+```bash
+cd worker/
+# Create KV namespace
+npx wrangler kv namespace create TRENDING_CACHE
+# Update wrangler.toml with your KV namespace ID
+npx wrangler deploy
+```
 
-### 2. 创建脚本
-1. 打开 Scriptable → 点 + 新建脚本
-2. 复制 `scriptable/GitHub Trending.js` 的全部内容粘贴进去
-3. 点 ▶️ Run 测试能否正常显示
+### 2. Install the Widget
 
-### 3. 添加桌面 Widget
-1. 回桌面 → 长按空白处 → 点 +
-2. 搜索 Scriptable → 选 **Large** 尺寸
-3. 长按 widget → 编辑小组件 → Script 选你的脚本名
+1. Install [Scriptable](https://apps.apple.com/app/scriptable/id1405459188) on your iPhone
+2. Create a new script, paste the contents of `scriptable/GitHub Trending.js`
+3. Update `ENDPOINT` to your Worker URL
+4. Run ▶️ to test
+5. Add a **Large** Scriptable widget to your home screen → select the script
 
-## 🚀 自部署 Worker（可选）
-
-如果你想用自己的 Cloudflare 账号：
-
-1. `cd worker/`
-2. 修改 `wrangler.toml` 中的 KV namespace ID
-3. `npx wrangler kv namespace create TRENDING_CACHE`
-4. `npx wrangler deploy`
-5. 修改 Scriptable 代码中的 `ENDPOINT` 为你的 Worker URL
-
-### 前置要求
-- Cloudflare 账号（免费即可）
-- Workers AI 已启用（免费额度充足）
-- Node.js 18+
-
-## 📁 项目结构
+## Project Structure
 
 ```
 ├── scriptable/
-│   └── GitHub Trending.js    # iOS Scriptable 小组件代码
+│   └── GitHub Trending.js    # iOS Scriptable widget
 ├── worker/
-│   ├── index.js              # Cloudflare Worker 后端
-│   └── wrangler.toml         # Worker 配置
-├── preview.png               # 效果预览图
+│   ├── index.js              # Cloudflare Worker (scraper + AI summary)
+│   └── wrangler.toml         # Worker config template
+├── preview.png               # Screenshot
 └── README.md
 ```
 
-## 📄 License
+## Requirements
+
+- iPhone with [Scriptable](https://scriptable.app) installed
+- Cloudflare account (free tier works)
+- Workers AI enabled (free daily quota is sufficient)
+
+## How It Works
+
+1. **Cloudflare Worker** scrapes GitHub's trending page every 4 hours
+2. **Workers AI** generates a concise Chinese summary for each repo
+3. Results are cached in **Cloudflare KV**
+4. **Scriptable widget** fetches the JSON and renders a native iOS widget
+5. Widget rotates between page 1 (repos 1–6) and page 2 (repos 7–12) every hour
+
+## License
 
 MIT
