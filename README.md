@@ -18,7 +18,7 @@
 ```
 iOS Widget (Scriptable)
     ↓ fetch JSON
-Cloudflare Worker (github-trending.gaojie504.workers.dev)
+Cloudflare Worker (your-worker.workers.dev)
     ↓ scrape + AI summarize
 GitHub Trending Page
 ```

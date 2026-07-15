@@ -2,7 +2,7 @@
 // Large widget · 5 repos per page · hourly rotation
 // White bg, blue accent, yellow stars, Chinese summaries
 
-const ENDPOINT = 'https://github-trending.gaojie504.workers.dev';
+const ENDPOINT = 'https://YOUR-WORKER.workers.dev';
 const REPOS_PER_PAGE = 6;
 
 const hour = new Date().getHours();

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { margin: 0; padding: 24px; background: #f2f2f7; display: flex; gap: 20px; flex-wrap: wrap; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif; }
+.label { color: #86868b; font-size: 11px; margin-bottom: 6px; font-weight: 500; }
+.widget-medium { width: 329px; height: 155px; border-radius: 22px; padding: 14px 16px; box-sizing: border-box; overflow: hidden; }
+.widget-small { width: 155px; height: 155px; border-radius: 22px; padding: 14px 16px; box-sizing: border-box; overflow: hidden; }
+
+/* ---- A: 素雅列表 ---- */
+.design-a { background: #fff; }
+.design-a .header { display: flex; align-items: baseline; margin-bottom: 10px; }
+.design-a .icon { font-size: 13px; margin-right: 4px; }
+.design-a .title { font-size: 14px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.2px; }
+.design-a .date { font-size: 10px; color: #86868b; margin-left: auto; }
+.design-a .row { display: flex; align-items: center; padding: 3.5px 0; }
+.design-a .rank { font-size: 12px; font-weight: 700; color: #86868b; width: 18px; }
+.design-a .name { font-size: 11.5px; font-weight: 600; color: #1d1d1f; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.design-a .stars { font-size: 10px; color: #86868b; font-weight: 500; margin-left: 8px; }
+.design-a .lang { font-size: 9px; color: #fff; background: #86868b; padding: 1px 5px; border-radius: 4px; margin-left: 6px; font-weight: 500; }
+
+/* ---- B: 暖色卡片 ---- */
+.design-b { background: #faf8f5; }
+.design-b .header { display: flex; align-items: center; margin-bottom: 8px; }
+.design-b .title { font-size: 13px; font-weight: 700; color: #3a3a3c; }
+.design-b .dot { width: 6px; height: 6px; border-radius: 50%; background: #c4a882; margin-right: 8px; }
+.design-b .date { font-size: 10px; color: #aeaeb2; margin-left: auto; }
+.design-b .row { padding: 3px 0; }
+.design-b .top { display: flex; align-items: center; }
+.design-b .name { font-size: 11px; font-weight: 600; color: #5a6872; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.design-b .stars { font-size: 10px; color: #c4a882; font-weight: 600; }
+.design-b .desc { font-size: 9px; color: #aeaeb2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.design-b .divider { height: 1px; background: #e8e4de; margin: 3px 0; }
+
+/* ---- C: 深色低饱和 ---- */
+.design-c { background: #1c1c1e; }
+.design-c .header { display: flex; align-items: baseline; margin-bottom: 10px; }
+.design-c .title { font-size: 14px; font-weight: 700; color: #e5e5ea; letter-spacing: -0.2px; }
+.design-c .date { font-size: 10px; color: #636366; margin-left: auto; }
+.design-c .row { display: flex; align-items: center; padding: 3.5px 0; }
+.design-c .rank { font-size: 12px; font-weight: 700; color: #636366; width: 18px; }
+.design-c .name { font-size: 11.5px; font-weight: 500; color: #8ab4f8; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.design-c .stars { font-size: 10px; color: #636366; font-weight: 500; margin-left: 8px; }
+
+/* ---- D: 极简进度条 ---- */
+.design-d { background: #fff; }
+.design-d .header { display: flex; align-items: baseline; margin-bottom: 8px; }
+.design-d .title { font-size: 14px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.2px; }
+.design-d .date { font-size: 10px; color: #86868b; margin-left: auto; }
+.design-d .row { display: flex; align-items: center; margin-bottom: 4px; }
+.design-d .name { font-size: 10px; font-weight: 500; color: #3a3a3c; width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.design-d .bar-bg { flex: 1; height: 10px; background: #f2f2f7; border-radius: 5px; margin: 0 8px; overflow: hidden; }
+.design-d .bar { height: 100%; border-radius: 5px; background: #8ab4f8; opacity: 0.7; }
+.design-d .bar.r1 { width: 100%; opacity: 0.85; }
+.design-d .bar.r2 { width: 39%; }
+.design-d .bar.r3 { width: 29%; }
+.design-d .bar.r4 { width: 26%; }
+.design-d .bar.r5 { width: 23%; }
+.design-d .count { font-size: 10px; color: #86868b; font-weight: 500; width: 32px; text-align: right; }
+
+/* ---- E: Small 深色 ---- */
+.design-e { background: #1c1c1e; display: flex; flex-direction: column; }
+.design-e .header { font-size: 10px; color: #636366; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+.design-e .top1-name { font-size: 15px; font-weight: 700; color: #e5e5ea; margin-top: 8px; line-height: 1.2; }
+.design-e .top1-stars { font-size: 22px; font-weight: 800; color: #8ab4f8; margin: 4px 0 2px; }
+.design-e .top1-meta { font-size: 10px; color: #636366; }
+.design-e .top1-desc { font-size: 9px; color: #48484a; margin-top: auto; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ---- F: Small 白底 ---- */
+.design-f { background: #fff; display: flex; flex-direction: column; }
+.design-f .header { font-size: 10px; color: #86868b; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+.design-f .top1-name { font-size: 15px; font-weight: 700; color: #1d1d1f; margin-top: 8px; line-height: 1.2; }
+.design-f .top1-stars { font-size: 22px; font-weight: 800; color: #5a6872; margin: 4px 0 2px; }
+.design-f .top1-meta { font-size: 10px; color: #86868b; }
+.design-f .top1-desc { font-size: 9px; color: #aeaeb2; margin-top: auto; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<div>
+<div class="label">A · 素雅白底</div>
+<div class="widget-medium design-a">
+  <div class="header"><span class="title">GitHub Trending</span><span class="date">Jul 15, 2026</span></div>
+  <div class="row"><span class="rank">1</span><span class="name">OpenCut-app/OpenCut</span><span class="stars">+4,276 ★</span><span class="lang">TS</span></div>
+  <div class="row"><span class="rank">2</span><span class="name">mattpocock/skills</span><span class="stars">+1,679 ★</span><span class="lang">Shell</span></div>
+  <div class="row"><span class="rank">3</span><span class="name">HKUDS/Vibe-Trading</span><span class="stars">+1,256 ★</span><span class="lang">PY</span></div>
+  <div class="row"><span class="rank">4</span><span class="name">Shubhamsaboo/awesome-llm-apps</span><span class="stars">+1,106 ★</span><span class="lang">PY</span></div>
+  <div class="row"><span class="rank">5</span><span class="name">Nutlope/hallmark</span><span class="stars">+1,015 ★</span><span class="lang">CSS</span></div>
+</div>
+</div>
+
+<div>
+<div class="label">B · 暖色纸感</div>
+<div class="widget-medium design-b">
+  <div class="header"><span class="dot"></span><span class="title">Today's Trending</span><span class="date">Jul 15</span></div>
+  <div class="row"><div class="top"><span class="name">OpenCut-app/OpenCut</span><span class="stars">+4,276 ★</span></div><div class="desc">The open-source CapCut alternative</div></div>
+  <div class="divider"></div>
+  <div class="row"><div class="top"><span class="name">mattpocock/skills</span><span class="stars">+1,679 ★</span></div><div class="desc">Skills for Real Engineers.</div></div>
+  <div class="divider"></div>
+  <div class="row"><div class="top"><span class="name">HKUDS/Vibe-Trading</span><span class="stars">+1,256 ★</span></div><div class="desc">Your Personal Trading Agent</div></div>
+  <div class="divider"></div>
+  <div class="row"><div class="top"><span class="name">Shubhamsaboo/awesome-llm-apps</span><span class="stars">+1,106 ★</span></div></div>
+</div>
+</div>
+
+<div>
+<div class="label">C · 深色低饱和</div>
+<div class="widget-medium design-c">
+  <div class="header"><span class="title">GitHub Trending</span><span class="date">Jul 15</span></div>
+  <div class="row"><span class="rank">1</span><span class="name">OpenCut-app/OpenCut</span><span class="stars">+4,276 ★</span></div>
+  <div class="row"><span class="rank">2</span><span class="name">mattpocock/skills</span><span class="stars">+1,679 ★</span></div>
+  <div class="row"><span class="rank">3</span><span class="name">HKUDS/Vibe-Trading</span><span class="stars">+1,256 ★</span></div>
+  <div class="row"><span class="rank">4</span><span class="name">Shubhamsaboo/awesome-llm-apps</span><span class="stars">+1,106 ★</span></div>
+  <div class="row"><span class="rank">5</span><span class="name">Nutlope/hallmark</span><span class="stars">+1,015 ★</span></div>
+</div>
+</div>
+
+<div>
+<div class="label">D · 极简进度条</div>
+<div class="widget-medium design-d">
+  <div class="header"><span class="title">GitHub Trending</span><span class="date">Jul 15</span></div>
+  <div class="row"><span class="name">OpenCut/OpenCut</span><div class="bar-bg"><div class="bar r1"></div></div><span class="count">4.3k</span></div>
+  <div class="row"><span class="name">mattpocock/skills</span><div class="bar-bg"><div class="bar r2"></div></div><span class="count">1.7k</span></div>
+  <div class="row"><span class="name">HKUDS/Vibe-Trading</span><div class="bar-bg"><div class="bar r3"></div></div><span class="count">1.3k</span></div>
+  <div class="row"><span class="name">awesome-llm-apps</span><div class="bar-bg"><div class="bar r4"></div></div><span class="count">1.1k</span></div>
+  <div class="row"><span class="name">Nutlope/hallmark</span><div class="bar-bg"><div class="bar r5"></div></div><span class="count">1.0k</span></div>
+</div>
+</div>
+
+<div>
+<div class="label">E · Small 深色</div>
+<div class="widget-small design-e">
+  <div class="header">Today's #1</div>
+  <div class="top1-name">OpenCut</div>
+  <div class="top1-stars">+4,276</div>
+  <div class="top1-meta">TypeScript · stars today</div>
+  <div class="top1-desc">The open-source CapCut alternative</div>
+</div>
+</div>
+
+<div>
+<div class="label">F · Small 白底</div>
+<div class="widget-small design-f">
+  <div class="header">Today's #1</div>
+  <div class="top1-name">OpenCut</div>
+  <div class="top1-stars">+4,276</div>
+  <div class="top1-meta">TypeScript · stars today</div>
+  <div class="top1-desc">The open-source CapCut alternative</div>
+</div>
+</div>
+
+</body>
+</html>

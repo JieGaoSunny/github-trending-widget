@@ -4,7 +4,7 @@ compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
 binding = "TRENDING_CACHE"
-id = "cb4cb1c3237943b18f4ac489c4f50bbe"
+id = "YOUR_KV_NAMESPACE_ID"
 
 [ai]
 binding = "AI"

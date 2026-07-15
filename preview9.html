@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { margin: 0; padding: 30px; background: #f2f2f7; display: flex; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; }
+.widget-large {
+  width: 338px; height: 354px; border-radius: 22px; padding: 14px 16px;
+  box-sizing: border-box; overflow: hidden; background: #fff;
+  display: flex; flex-direction: column;
+}
+.header { display: flex; align-items: center; margin-bottom: 6px; }
+.accent-bar { width: 3px; height: 18px; background: #007aff; border-radius: 2px; margin-right: 10px; }
+.title { font-size: 15px; font-weight: 700; color: #1d1d1f; }
+.date { font-size: 10px; color: #aeaeb2; margin-left: auto; }
+.row { padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+.row:last-child { border-bottom: none; }
+.top-line { display: flex; align-items: center; }
+.medal { font-size: 13px; width: 20px; flex-shrink: 0; }
+.rank { font-size: 12px; font-weight: 700; color: #c7c7cc; width: 20px; flex-shrink: 0; text-align: center; }
+.name { font-size: 13px; font-weight: 600; color: #1d1d1f; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stars-badge { display: flex; align-items: center; margin-left: 8px; flex-shrink: 0; }
+.star-icon { font-size: 10px; color: #f5c518; margin-right: 2px; }
+.star-count { font-size: 12px; font-weight: 700; }
+.star-hot { color: #e8651a; }
+.star-warm { color: #d4880f; }
+.star-mild { color: #6b7280; }
+.summary-line { font-size: 11px; color: #3a3a3c; margin-top: 2px; padding-left: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+.desc-total { font-size: 9px; margin-top: 1px; padding-left: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #aeaeb2; }
+.footer { margin-top: auto; display: flex; align-items: center; padding-top: 3px; }
+.footer-text { font-size: 9px; color: #c4c4c8; }
+.footer-link { font-size: 9px; color: #007aff; margin-left: auto; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="widget-large">
+  <div class="header">
+    <div class="accent-bar"></div>
+    <span class="title">GitHub Trending</span>
+    <span class="date">Jul 15, 2026</span>
+  </div>
+
+  <div class="row">
+    <div class="top-line">
+      <span class="medal">🥇</span>
+      <span class="name">OpenCut-app/OpenCut</span>
+      <div class="stars-badge"><span class="star-icon">★</span><span class="star-count star-hot">+4,276</span></div>
+    </div>
+    <div class="summary-line">开源的CapCut替代品，视频剪辑工具</div>
+    <div class="desc-total">The open-source CapCut alternative · ☆ 69.3k</div>
+  </div>
+
+  <div class="row">
+    <div class="top-line">
+      <span class="medal">🥈</span>
+      <span class="name">mattpocock/skills</span>
+      <div class="stars-badge"><span class="star-icon">★</span><span class="star-count star-hot">+1,679</span></div>
+    </div>
+    <div class="summary-line">为真正的工程师提供的技能集合</div>
+    <div class="desc-total">Skills for Real Engineers. From my .claude directory. · ☆ 170k</div>
+  </div>
+
+  <div class="row">
+    <div class="top-line">
+      <span class="medal">🥉</span>
+      <span class="name">HKUDS/Vibe-Trading</span>
+      <div class="stars-badge"><span class="star-icon">★</span><span class="star-count star-warm">+1,256</span></div>
+    </div>
+    <div class="summary-line">个人交易代理平台，AI量化交易</div>
+    <div class="desc-total">Your Personal Trading Agent · ☆ 22.9k</div>
+  </div>
+
+  <div class="row">
+    <div class="top-line">
+      <span class="rank">4</span>
+      <span class="name">Shubhamsaboo/awesome-llm-apps</span>
+      <div class="stars-badge"><span class="star-icon">★</span><span class="star-count star-warm">+1,106</span></div>
+    </div>
+    <div class="summary-line">100多个可以运行的AI代理和RAG应用</div>
+    <div class="desc-total">100+ AI Agent &amp; RAG apps you can actually run · ☆ 121k</div>
+  </div>
+
+  <div class="row">
+    <div class="top-line">
+      <span class="rank">5</span>
+      <span class="name">Nutlope/hallmark</span>
+      <div class="stars-badge"><span class="star-icon">★</span><span class="star-count star-mild">+1,015</span></div>
+    </div>
+    <div class="summary-line">让AI生成的UI设计不再千篇一律</div>
+    <div class="desc-total">Anti-AI-slop design skill for Claude Code, Cursor, and Codex. · ☆ 6.2k</div>
+  </div>
+
+  <div class="row">
+    <div class="top-line">
+      <span class="rank">6</span>
+      <span class="name">hasaneyldrm/exercises-dataset</span>
+      <div class="stars-badge"><span class="star-icon">★</span><span class="star-count star-mild">+851</span></div>
+    </div>
+    <div class="summary-line">包含1324个健身运动的数据集</div>
+    <div class="desc-total">1,324-exercise fitness dataset — animation GIFs... · ☆ 13.6k</div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-text">Updated 10:18</span>
+    <span class="footer-link">Page 1/2 →</span>
+  </div>
+</div>
+</body>
+</html>
