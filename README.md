@@ -3,7 +3,7 @@
 An iOS home screen widget that displays today's GitHub Trending repositories — built with [Scriptable](https://scriptable.app) and powered by a Cloudflare Worker backend.
 
 <p align="center">
-  <img src="preview.png" width="360" alt="GitHub Trending Widget on iPhone">
+  <img src="hero.png" width="360" alt="GitHub Trending Widget on iPhone">
 </p>
 
 ## Features
